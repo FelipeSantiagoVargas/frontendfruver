@@ -1,14 +1,16 @@
-import { Grid, Paper, Avatar, TextField, Button, Typography, Link, Divider } from '@mui/material'
-import { FormControlLabel } from '@mui/material'
-import { Checkbox } from '@mui/material'
+import { Grid, Paper, Avatar, TextField, Button, Alert, Fade } from '@mui/material'
 import axios from 'axios'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { Container } from '@mui/system'
+
 
 
 function login() {
-
+    const router = useRouter()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [check, setCheck] = useState(false)
 
     function changeUsername(event) {
         setUsername(event.target.value)
@@ -27,7 +29,12 @@ function login() {
             });
 
             localStorage.setItem('token',data.jwt) //Provisional, esto no se debe hacer
+            router.push("/home")
+            setCheck(false)
         } catch (error) {
+            console.log("Credenciales erroneas")
+            setCheck(true)
+            setTimeout(()=>setCheck(false),2000)
         }
     }
 
@@ -47,8 +54,10 @@ function login() {
                 <TextField label='Username' placeholder='Enter username' style={txtStyle} onChange={changeUsername} fullWidth required />
                 <TextField label='Password' placeholder='Enter password' style={txtStyle} onChange={changePassword} type='password' fullWidth required />
                 <Button type='submit' color='primary' variant="contained" style={btnstyle} onClick={credentials} fullWidth>Ingresar</Button>
+                <Fade in={check} timeout={500}><Alert sx={{marginTop: '4px'}} severity="error">Credenciales Incorrectas!</Alert></Fade>
             </Paper>
         </Grid>
+        
     )
 }
 
