@@ -41,7 +41,7 @@ function login() {
 
     const paperStyle = { padding: 20, height: '400px', width: 380, margin: "150px auto" }
     const avatarStyle = { backgroundColor: '#1bbd7e' }
-    const btnstyle = { margin: '16px 0 0 0', height: '50px' }
+    const btnstyle = { margin: '16px 0 0 0', height: '50px', color:"white"}
     const txtStyle = { margin: '10px 0' }
 
     return (

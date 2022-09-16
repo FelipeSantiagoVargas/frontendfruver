@@ -5,11 +5,10 @@ import axios from "axios";
 function Home(props) {
     return (
         <Base title="Home">
-            <Box sx={{
-                backgroundColor: 'blue'
+            <Box bgcolor='primary' sx={{
+                backgroundColor: 'primary'
             }}>
                 Home
-               
             </Box>
         </Base>
     );
