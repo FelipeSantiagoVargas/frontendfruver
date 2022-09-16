@@ -17,6 +17,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Divider, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 function Navigation(props) {
 
@@ -43,7 +44,9 @@ function Navigation(props) {
                 alignItems="center"
                 sx={{ paddingY: '10px' }}>
                 <Grid item xs={4} sx={{ textAlign: 'center' }}>
+                <Link href='/home'>
                     <AccountCircleIcon color='primary' style={{ fontSize: 60 }} />
+                    </Link>
                 </Grid>
                 <Grid item xs={8} style={{ fontSize: 22 }}>
                     Username
@@ -52,14 +55,18 @@ function Navigation(props) {
             <Divider />
             <List>
                 {modules.map((module) => (
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                <NoteAddIcon />
-                            </ListItemIcon>
-                            <ListItemText primary={module.name} />
-                        </ListItemButton>
-                    </ListItem>
+                    <Link href={module.route}>
+                        <ListItem disablePadding>
+
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {/* Icono personalizado */}
+                                    <NoteAddIcon />
+                                </ListItemIcon>
+                                <ListItemText primary={module.name} />
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
                 ))}
                 {/* <ListItem disablePadding>
                     <ListItemButton>

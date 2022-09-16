@@ -6,7 +6,6 @@ import { Navigation } from "./Navigation";
 function Base(props) {
     return (
         <Box sx={{
-            backgroundColor: 'red',
             height: '100vh'
         }}>
             <Grid container>

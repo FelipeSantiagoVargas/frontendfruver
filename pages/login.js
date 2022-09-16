@@ -27,12 +27,12 @@ function login() {
                 identifier: username,
                 password: password,
             });
-
             localStorage.setItem('token',data.jwt) //Provisional, esto no se debe hacer
             router.push("/home")
             setCheck(false)
         } catch (error) {
             console.log("Credenciales erroneas")
+            console.log(error)
             setCheck(true)
             setTimeout(()=>setCheck(false),2000)
         }
